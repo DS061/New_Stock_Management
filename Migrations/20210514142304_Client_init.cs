@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace New_Stock_Management.Migrations
@@ -22,6 +23,8 @@ namespace New_Stock_Management.Migrations
                 {
                     table.PrimaryKey("PK_Client_Master", x => x.Client_ID);
                 });
+            var sqlFile = Path.Combine(".\\Script", @"Script.sql");
+            migrationBuilder.Sql(File.ReadAllText(sqlFile));
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
